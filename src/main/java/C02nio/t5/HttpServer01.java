@@ -21,12 +21,14 @@ public class HttpServer01 {
     }
 
     private static void service(Socket socket) {
+        System.out.println("HTTP: receive request");
         try {
             PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
             printWriter.println("HTTP/1.1 200 OK");
             printWriter.println("Content-Type:text/html;charset=utf-8");
             String body = "hello, nio1";
             printWriter.println("Context-Length:" + body.getBytes().length);
+            printWriter.println("Connection:keep-alive");
             printWriter.println();
             printWriter.println(body);
             printWriter.println();
