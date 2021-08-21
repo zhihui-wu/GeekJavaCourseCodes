@@ -1,0 +1,37 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.gradle/
+.idea/
+.settings/
+appcompat_v7/comparator
+bin/
+build/
+gen/
+gradle/
+out/
+proguard/
+ship/
+target/
+.classpath
+.idea
+.project
+.readme
+.update-config
+*.iml
+.swp
+#.gitignore
+ConfigCenter_*
+rebel.xml
+
+/luckysrm-service/loghub-config.properties
+/luckysrm-service/logs/
+/logs/
+/GaeaConfigCenter_luckysrmadmin
+/GaeaConfigCenter_luckysrmservice
+/loghub-config.properties
+/luckysrm-service/GaeaConfigCenter_luckysrmservice
+/onepiece-cache
+stdout.log
