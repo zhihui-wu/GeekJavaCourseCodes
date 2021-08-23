@@ -32,6 +32,7 @@ public class BackendServer {
             printWriter.println("Content-Length:" + body.getBytes().length);
             printWriter.println();
             printWriter.write(body);
+            printWriter.println();
             printWriter.close();
             socket.close();
         } catch (Exception e) {

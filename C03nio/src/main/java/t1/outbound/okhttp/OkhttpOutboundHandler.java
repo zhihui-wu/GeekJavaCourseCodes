@@ -70,7 +70,6 @@ public class OkhttpOutboundHandler {
         Response response = null;
         try {
             response = httpclient.newCall(request).execute();
-            System.out.println(response.body().string());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,12 +83,14 @@ public class OkhttpOutboundHandler {
     private void handleResponse(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, final Response endpointResponse) throws Exception {
         FullHttpResponse response = null;
         try {
-            ResponseBody responseBody = endpointResponse.body();
-            byte[] body = responseBody.bytes();
+            byte[] body = endpointResponse.body().bytes();
 
             response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body));
             response.headers().set("Content-Type", "application/json");
-            response.headers().setInt("Content-Length", Integer.parseInt(endpointResponse.header("Content-Length")));
+            String contextLength = endpointResponse.headers().get("Context-Length");
+            if (contextLength != null) {
+                response.headers().setInt("Content-Length", Integer.parseInt(contextLength));
+            }
 
             filter.filter(response);
 
